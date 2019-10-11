@@ -1,0 +1,14 @@
+$('.showpass').click(function(){
+    if($('#fos_user_registration_form_plainPassword_first').attr('type')=='password')
+    {
+        $(this).removeClass('icon-eye');
+        $(this).addClass('icon-eye-off');
+        $('#fos_user_registration_form_plainPassword_first').attr('type','text');
+    }
+    else
+    {
+        $(this).addClass('icon-eye');
+        $(this).removeClass('icon-eye-off');
+        $('.fos_user_registration_form_plainPassword_first').attr('type','password');
+    }
+})

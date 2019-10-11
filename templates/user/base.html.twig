@@ -1,0 +1,630 @@
+
+<!doctype html>
+<html lang="fr">
+
+<!-- Mirrored from landkit.goodthemes.co/service.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 20 Aug 2019 12:33:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %} Scpi {% endblock %}</title>
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="{{ asset('asset/fonts/Feather/feather.css') }}" >
+    <link rel="stylesheet" href="{{ asset('asset/libs/flickity/dist/flickity.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/flickity-fade/flickity-fade.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/aos/dist/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/jarallax/dist/jarallax.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/highlightjs/styles/vs2015.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('asset/feather/css/iconfont.css') }}" >
+
+    <!-- Map -->
+    <link href="{{ asset('asset/mapbox-gl.css') }}" rel='stylesheet' />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{ asset('asset/css/theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/mystyle.css') }}">
+    {% block styleofpage %}
+
+        <link rel="stylesheet" href="{{ asset('asset/css/reservation.css') }}">
+    {% endblock %}
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('asset/slick/slick.css') }}"/>
+    <!-- Add the new slick-theme.css if you want the default styling -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('asset/slick/slick-theme.css') }}"/>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"   >
+
+    <style>
+        .linechosen
+        {
+            display: none;
+        }
+        .diverr
+        {
+            display: none;
+        }
+    </style>
+
+    <title>SCPI</title>
+
+</head>
+<body>
+
+<!-- MODALS
+================================================== -->
+
+<!-- NAVBAR
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+
+
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="/">
+            <img src="{{ asset('asset/img/logo01.png') }}" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Toggler -->
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse p-md-0 p-2  pt-md-0 pt-5" id="navbarCollapse">
+
+            <form class="form-inline ml-auto">
+
+                <input type="search" class="form-control form-control-sm serchfield" placeholder="Chercher...">
+                <button type="submit" class="btn btn-sm">
+                    <i class="icon feather icon-search colorbrand font-weight-bold"></i>
+                </button>
+
+            </form>
+
+
+            <!-- Button -->
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                        <!-- Navigation -->
+                        <ul class="navbar-nav ml-auto">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarAccount" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+                                    {{ app.user.prenom ~" "~ app.user.nom }}
+                                </a>
+                                <ul class="dropdown-menu  p-0 drop" aria-labelledby="navbarAccount">
+                                    <li class="my-2"><a class="dropdown-item  m-0 px-2" href="/profil">Profil</a></li>
+                                    <li class="my-2"><a class="dropdown-item  m-0 px-2" href="/parts">Mes parts</a></li>
+                                    <li class="my-2"><a class="dropdown-item  m-0 px-2" href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown shopping-cart">
+
+                                <a class="nav-link dropdown-toggle position-relative mb-0" id="navbarDocumentation" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon feather icon-briefcase colorbrand" style="font-size: 30px!important;"></i>
+                                    <span class="badge badge-rounded-circle badge-danger-soft position-absolute  countitems">
+                                        <span>0</span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-md d-none" aria-labelledby="navbarDocumentation">
+                                    <div class="list-group list-group-flush">
+
+
+                                        <h4 class="text-center monpanier">Mon Panier</h4>
+
+
+                                        <h4 class="text-center my-2">
+                                            <b> Total : <span class="total">0</span> €</b>
+                                        </h4>
+
+                                        <a href="/detailspanier" class="btn btnbrand d-block w-100  valider" >
+                                            Valider
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                {% else %}
+
+                    <a class="navbar-btn btn btn-sm btn-primary lift ml-auto mt-2" href="/reservation">
+                        Réservez vos parts
+                    </a>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown shopping-cart">
+                            <a class="nav-link dropdown-toggle position-relative mb-0" id="navbarDocumentation" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+                                <i class="icon feather icon-briefcase colorbrand" style="font-size: 30px!important;"></i>
+                                <span class="badge badge-rounded-circle badge-danger-soft position-absolute  countitems">
+                                            <span>0</span>
+                                        </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-md d-none" aria-labelledby="navbarDocumentation">
+                                <div class="list-group list-group-flush">
+
+
+                                    <h4 class="text-center monpanier">Mon Panier</h4>
+
+
+                                    <h4 class="text-center my-2">
+                                        <b> Total : <span class="total">0</span> €</b>
+                                    </h4>
+
+                                    <a href="/detailspanier" class="btn btnbrand d-block w-100  valider">
+                                        Valider
+                                    </a>
+
+                                </div>
+                            </div>
+                        </li>
+                     </ul>
+
+                {% endif %}
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
+                    <i class="icon feather icon-x"></i>
+                </button>
+
+        </div>
+
+    </div>
+</nav>
+
+<div class="container-fluid p-0 {% if plein is defined and not plein is null  %} bg-gradient-light {% endif %}">
+    {% block body %} {% endblock %}
+</div>
+
+
+
+<!-- FOOTER
+================================================== -->
+<footer class="py-8 py-md-11 bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-3">
+
+                <!-- Brand -->
+                <img src="{{ asset('asset/img/brand.svg') }}" alt="..." class="footer-brand img-fluid mb-2">
+
+                <!-- Text -->
+                <p class="text-gray-700 mb-2">
+                    A better way to build.
+                </p>
+
+                <!-- Social -->
+                <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+                    <li class="list-inline-item list-social-item mr-3">
+                        <a href="#!" class="text-decoration-none">
+                            <img src="{{ asset('asset/img/icons/social/instagram.svg') }}" class="list-social-icon" alt="...">
+                        </a>
+                    </li>
+                    <li class="list-inline-item list-social-item mr-3">
+                        <a href="#!" class="text-decoration-none">
+                            <img src="{{ asset('asset/img/icons/social/facebook.svg') }}" class="list-social-icon" alt="...">
+                        </a>
+                    </li>
+                    <li class="list-inline-item list-social-item mr-3">
+                        <a href="#!" class="text-decoration-none">
+                            <img src="{{ asset('asset/img/icons/social/twitter.svg') }}" class="list-social-icon" alt="...">
+                        </a>
+                    </li>
+                    <li class="list-inline-item list-social-item">
+                        <a href="#!" class="text-decoration-none">
+                            <img src="{{ asset('asset/img/icons/social/pinterest.svg') }}" class="list-social-icon" alt="...">
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <!-- Heading -->
+                <h6 class="font-weight-bold text-uppercase text-gray-700">
+                    Products
+                </h6>
+
+                <!-- List -->
+                <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Page Builder
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            UI Kit
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Styleguide
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Documentation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-reset">
+                            Changelog
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <!-- Heading -->
+                <h6 class="font-weight-bold text-uppercase text-gray-700">
+                    Services
+                </h6>
+
+                <!-- List -->
+                <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Documentation
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Changelog
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Pagebuilder
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-reset">
+                            UI Kit
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-6 col-md-4 offset-md-4 col-lg-2 offset-lg-0">
+
+                <!-- Heading -->
+                <h6 class="font-weight-bold text-uppercase text-gray-700">
+                    Connect
+                </h6>
+
+                <!-- List -->
+                <ul class="list-unstyled text-muted mb-0">
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Page Builder
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            UI Kit
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Styleguide
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Documentation
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Changelog
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Documentation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-reset">
+                            Changelog
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <!-- Heading -->
+                <h6 class="font-weight-bold text-uppercase text-gray-700">
+                    Legal
+                </h6>
+
+                <!-- List -->
+                <ul class="list-unstyled text-muted mb-0">
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Documentation
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#!" class="text-reset">
+                            Changelog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-reset">
+                            Pagebuilder
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+</footer>
+
+<div class="modal fade" id="modalSigninHorizontal" tabindex="-1" role="dialog" aria-labelledby="modalSigninHorizontalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="card card-row">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        <div class="card-body">
+
+                            <!-- Close -->
+                            <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+
+                            <!-- Heading -->
+                            <h2 class="mb-0 font-weight-bold text-center" id="modalSigninHorizontalTitle">
+                                Validation SMS
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="mb-6 text-center text-muted">
+                                Veuillez valider votre numéro de téléphone
+                            </p>
+
+                            <!-- Form -->
+                            <form class="mb-6">
+
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <label class="sr-only" for="modalSigninHorizontalEmail">
+                                        Code SMS
+                                    </label>
+                                    <input type="email" class="form-control" id="codesms" placeholder="Code SMS">
+                                </div>
+
+                                <!-- Submit -->
+                                <button class="btn btn-block btn-primary" type="button">
+                                    Valider
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div> <!-- / .row -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JAVASCRIPT
+================================================== -->
+<!-- Libs JS -->
+<script src="{{ asset('asset/libs/jquery/dist/jquery.min.js') }}"></script>
+
+<script src="{{ asset('asset/js/jquery-ui.min.js') }}"></script>
+
+<link href="{{ asset('asset/ickeck/skins/all.css') }}" rel="stylesheet">
+<script src="{{ asset('asset/ickeck/icheck.js') }}"></script>
+<script src="{{ asset('asset/ickeck/custom.min.js') }}"></script>
+
+
+<script src="{{ asset('asset/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('asset/libs/flickity/dist/flickity.pkgd.min.js') }}"></script>
+<script src="{{ asset('asset/libs/flickity-fade/flickity-fade.js') }}"></script>
+<script src="{{ asset('asset/libs/aos/dist/aos.js') }}"></script>
+<script src="{{ asset('asset/libs/smooth-scroll/dist/smooth-scroll.min.js') }}"></script>
+<script src="{{ asset('asset/libs/jarallax/dist/jarallax.min.js') }}"></script>
+<script src="{{ asset('asset/libs/jarallax/dist/jarallax-video.min.js') }}"></script>
+<script src="{{ asset('asset/libs/jarallax/dist/jarallax-element.min.js') }}"></script>
+<script src="{{ asset('asset/libs/typed.js/lib/typed.min.js') }}"></script>
+<script src="{{ asset('asset/libs/countup.js/dist/countUp.min.js') }}"></script>
+<script src="{{ asset('asset/libs/highlightjs/highlight.pack.min.js') }}"></script>
+<script src="{{ asset('asset/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js') }}"></script>
+
+
+<!-- Map -->
+<script src="{{ asset('asset/js/inputmask.js') }}"></script>
+
+<script src="{{ asset('asset/mapbox-gl.js') }}"></script>
+
+<!-- Theme JS -->
+<script src="{{ asset('asset/js/theme.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('asset/slick/slick.min.js') }}"></script>
+
+<script src="{{ asset('asset/js/custom.js') }}"></script>
+
+
+<script>
+
+    $(".maskedphone").inputmask({
+        mask: "0599999999",
+        definitions: {'5': {validator: "(6|7)"}}
+    });
+
+    $("#codesms").inputmask({
+        mask: "*{4}",
+        greedy: false,
+        definitions: {
+            '*': {
+                validator: "[0-9]"
+            }
+        }
+    });
+
+
+
+
+    $('input[id^=fos_user_registration_form]').on('blur',function () {
+
+        if($(this).val()!="" && $(this).hasClass('has-error'))
+        {
+            if($(this).attr('type')=="text")
+            {
+                $(this).removeClass('has-error');
+                $(this).closest('div').find('label').removeClass('has-error');
+
+            }
+            else if($(this).attr('type')=="email")
+            {
+                if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($(this).val())))
+                {
+                    $(this).animateCss('shake');
+                    $(this).select();
+                    return;
+                }
+                else
+                {
+                    $(this).removeClass('has-error');
+                    $(this).closest('div').find('label').removeClass('has-error');
+                }
+            }
+            else if($(this).attr('type')=="tel")
+            {
+                if(!(/^((\+)33|0)(6|7)(\d{2}){4}$/g.test($(this).val())))
+                {
+                    $(this).animateCss('shake');
+                    $(this).select();
+                    return;
+                }
+                else
+                {
+                    $(this).removeClass('has-error');
+                    $(this).closest('div').find('label').removeClass('has-error');
+                }
+            }
+            else
+            {
+                $(this).removeClass('has-error');
+                $(this).closest('div').find('label').removeClass('has-error');
+            }
+
+        }
+    })
+
+    $('.signup').click(function () {
+
+        var username = $('#fos_user_registration_form_username').val();
+        var nom = $('#fos_user_registration_form_nom').val();
+        var prenom = $('#fos_user_registration_form_prenom').val();
+        var email = $('#fos_user_registration_form_email').val();
+        var password = $('#fos_user_registration_form_plainPassword_first').val();
+        var passwordconf = $('#fos_user_registration_form_plainPassword_second').val();
+        var adresse = $('#fos_user_registration_form_adresse').val();
+        var tel = $('#fos_user_registration_form_tel').val();
+
+        if(username.trim()!="" && nom.trim()!="" && prenom.trim()!="" && email.trim()!="" && password.trim()!="" && passwordconf.trim()!="" && adresse.trim()!="" && tel.trim()!="")
+        {
+            $('input[id^=fos_user_registration_form]').removeClass('has-error');
+            $('label[for^=fos_user_registration_form]').removeClass('has-error');
+
+
+            if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)))
+            {
+                $('#fos_user_registration_form_email').animateCss('shake');
+                $('#fos_user_registration_form_email').addClass('has-error');
+                $('#fos_user_registration_form_email').closest('div').find('label').addClass('has-error');
+                return;
+            }
+
+
+            if(!(/^((\+)33|0)(6|7)(\d{2}){4}$/g.test(tel)))
+            {
+                $('#fos_user_registration_form_tel').animateCss('shake');
+                $('#fos_user_registration_form_tel').addClass('has-error');
+                $('#fos_user_registration_form_tel').closest('div').find('label').addClass('has-error');
+                return;
+            }
+
+
+
+
+
+
+            if(password!=passwordconf)
+            {
+                $('#fos_user_registration_form_plainPassword_second , #fos_user_registration_form_plainPassword_first').animateCss('shake');
+                $('#fos_user_registration_form_plainPassword_second , #fos_user_registration_form_plainPassword_first').addClass('has-error');
+                $('#fos_user_registration_form_plainPassword_second , #fos_user_registration_form_plainPassword_first').closest('div').find('label').addClass('has-error');
+                return;
+            }
+
+
+            var codegen = Math.floor(1000 + Math.random() * 9000);
+            localStorage.setItem('codegen',codegen);
+
+            $.ajax({
+                url:'/sendsms',
+                type:'POST',
+                data : {"code":codegen,"phone":tel.replace(/^0/gi, "+212"),"token":"ea6b2efbdd4255a9f1b3bbc6399b58f4"},
+                success:function (data1) {
+
+                    if(data1==1)
+                    {
+                        $('#modalSigninHorizontal').modal('show');
+                        //$(this).closest('form').submit();
+                    }
+                    else
+                    {
+                        alert('code non envoyé');
+                    }
+
+                }
+            })
+        }
+        else
+        {
+            $('input[id^=fos_user_registration_form]').removeClass('has-error');
+            $('label[for^=fos_user_registration_form]').removeClass('has-error');
+
+            $('input[id^=fos_user_registration_form]').each(function () {
+                if($(this).val().trim()=="")
+                {
+                    $(this).animateCss('shake');
+                    $(this).addClass('has-error');
+                    $(this).closest('div').find('label').addClass('has-error');
+                }
+            })
+        }
+
+
+
+
+    })
+
+
+</script>
+
+</body>
+
+</html>

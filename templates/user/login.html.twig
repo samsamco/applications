@@ -1,0 +1,44 @@
+
+{% extends 'user/base.html.twig' %}
+
+{% block title %} {% if not type is null and type == 'register'  %} Registration {% else  %} Login {% endif %} {% endblock %}
+
+{% block body %}
+
+{% if not plein is null  %}
+<div class="container">
+{% endif %}
+
+
+<div class="row align-items-center justify-content-center">
+
+        {% if not plein is null  %}
+            <div class="col-8">
+        {% else  %}
+             <div class="col-12">
+        {% endif %}
+
+        <div class="login_container p-0  {% if not plein is null  %} my-4 {% endif %}">
+            <ul class="nav nav-tabs no-border position-relative">
+                <li class="{% if not type is null and type == 'register'  %} active {% endif %}" ><a href="#signup" data-toggle="pill" >Créer un compte</a></li>
+                <li class="{% if not type is null and type == 'login'  %} active {% endif %}" ><a href="#signin" data-toggle="pill">Se connecter</a></li>
+            </ul>
+            <div class="tab-content position-relative d-flex align-items-center">
+                <div id="signup" class="tab-pane {% if not type is null and type == 'register'  %} active  {% else %} fade {% endif %} w-100" style="height: fit-content">
+                    {{ render(controller('App\\Controller\\RegistrationController::index')) }}
+                </div>
+                <div id="signin" class="tab-pane {% if not type is null and type == 'login'  %} active  {% else %} fade {% endif %}  w-100 " style="height: fit-content">
+                    {{ render(controller('App\\Controller\\LoginController::index')) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    {% if not plein is null  %}
+</div>
+{% endif %}
+
+
+
+{% endblock %}

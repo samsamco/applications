@@ -1,0 +1,50 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %} Bilan {% endblock %}
+
+{% block extrahead %}
+
+
+{% endblock %}
+
+
+{% block extrafooter %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-table">
+                <div class="card-header">Bilans</div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Url</th>
+                            <th>Url historique</th>
+                            {#<th>Date bilan</th>#}
+                            <th class="actions"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for b in bilans %}
+                            <tr>
+                                <td> {{ b.url }}</td>
+                                <td> {{ b.urlHistorique }}</td>
+                                {#<td> {{ b.date_bilan }}</td>#}
+                                <td class="actions">
+                                    <a class="icon" href="/admin/bilan/delete/{{ b.id }}"><i class="mdi mdi-delete"></i></a>&nbsp;&nbsp;
+                                    <a class="icon" href="/admin/bilan/edit/{{ b.id }}"><i class="mdi mdi-edit"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

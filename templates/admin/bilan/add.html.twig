@@ -1,0 +1,79 @@
+
+{% extends 'admin/base.html.twig' %}
+
+{% block title %} Ajouter bilan {% endblock %}
+
+{% block body %}
+
+
+    <div class="row">
+        <div class="col-12">
+
+
+            {% for message in app.flashes('message') %}
+                <div class="w-50 mx-auto">
+
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="mdi mdi-close" aria-hidden="true"></span></button>
+                        <div class="icon"><span class="mdi mdi-check"></span></div>
+                        <div class="message">{{  message }}</div>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+
+            <div class="card card-border-color card-border-color-primary">
+                <div class="card-body">
+                    {{ form_start(form) }}
+
+                    {%  if not form_errors(form) is empty  %}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="mdi mdi-close" aria-hidden="true"></span></button>
+                            <div class="icon"> <span class="mdi mdi-close-circle-o"></span></div>
+                            <div class="message">{{ form_errors(form) }}</div>
+                        </div>
+                    {% endif %}
+
+                        <div class="form-group pt-2">
+                            {{ form_label(form.url, 'Url') }}
+                            {{ form_widget(form.url,{ 'attr': {'class': 'form-control','placeholder':'Url'} }) }}
+                        </div>
+
+                        <div class="form-group pt-2">
+                            {{ form_label(form.url_historique, 'Url historique') }}
+                            {{ form_widget(form.url_historique,{ 'attr': {'class': 'form-control','placeholder':'Url historique'} }) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.date_bilan, 'Date bilan') }}
+                            {{ form_widget(form.date_bilan,{ 'attr': {'class': 'form-control','placeholder':'Date bilan'} }) }}
+                        </div>
+
+                        <div class="row pt-3">
+                            <div class="col-lg-6 pb-4 pb-lg-0">
+
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="text-right">
+                                    {{ form_widget(form.save, { 'attr': {'class': 'btn btn-space btn-primary'}, 'label': 'Valider' } ) }}
+                                </p>
+                            </div>
+                        </div>
+
+                    {{ form_end(form) }}
+
+                </div>
+
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}
+
+

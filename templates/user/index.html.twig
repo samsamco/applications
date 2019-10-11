@@ -1,0 +1,562 @@
+
+{% extends 'user/base.html.twig' %}
+
+{% block title %} Scpi {% endblock %}
+
+{% block body %}
+
+<!-- WELCOME
+================================================== -->
+<section class="position-relative pt-12 pt-md-14 mt-n11">
+
+    <!-- Shape -->
+    <div class="shape shape-fluid-x shape-blur-2 svg-shim text-light">
+        <svg viewBox="0 0 1313 768" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M442.794 768C605.882 768 748.362 679.773 825.111 548.444L825.294 549C825.294 549 825.543 548.251 826.056 546.819C839.139 524.212 850.279 500.339 859.248 475.43C901.996 397.81 989.306 277.09 1144.29 206L1143.37 205.307C1230.34 171.296 1295.63 94.049 1312.83 0H1.29419V295.514C0.631105 305.423 0.294189 315.422 0.294189 325.5C0.294189 569.886 198.408 768 442.794 768Z" fill="currentColor"/>
+        </svg>
+
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+
+        <div class="row align-items-center text-center text-md-left  justify-content-end">
+            <div class="col-12 col-md-6">
+
+                <!-- Image -->
+                <img src="{{ asset('asset/img/illustrations/illustration-4.png') }}" alt="..." class="img-fluid mw-130 float-right mb-6 mb-md-0" data-aos="fade-right">
+
+            </div>
+            <!-- <div class="col-12 col-md-1"></div> -->
+            <div class="col-12 col-md-5">
+                <div class="row justify-content-around aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
+
+                    <h2 class="display-6 text-center text-md-center mb-4">
+                        Prenez le minimum de risque pour le maximum de rendement
+                    </h2>
+
+                    <div class="col-12 col-md-6">
+                        <div class="card Mycard-1 shadow-lg mb-6 mb-md-4 lift lift-lg">
+                            <div class="Mycard-body card-body text-center">
+
+                                <!-- Icon -->
+                                <div class="mx-auto Myicon-circle  mb-1">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <path fill="#000000" d="M15,20A1,1 0 0,0 14,19H13V17H17A2,2 0 0,0 19,15V5A2,2 0 0,0 17,3H7A2,2 0 0,0 5,5V15A2,2 0 0,0 7,17H11V19H10A1,1 0 0,0 9,20H2V22H9A1,1 0 0,0 10,23H14A1,1 0 0,0 15,22H22V20H15M8.25,10.08L9.41,8.92L11,10.5L14.59,6.92L15.75,8.33L11,13.08L8.25,10.08Z"></path>
+                                    </svg>
+
+                                </div>
+
+                                <!-- Heading -->
+                                <h5 class="font-weight-bold">
+                                    Information
+                                </h5>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-md-6">
+                        <div class="card Mycard-2 shadow-lg mb-6 mb-md-4 lift lift-lg">
+                            <div class="Mycard-body card-body text-center">
+
+                                <!-- Icon -->
+                                <div class="mx-auto Myicon-circle  mb-1">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M11,10H5L3,8L5,6H11V3L12,2L13,3V4H19L21,6L19,8H13V10H19L21,12L19,14H13V20A2,2 0 0,1 15,22H9A2,2 0 0,1 11,20V10Z"></path>
+                                    </svg>
+                                </div>
+
+                                <!-- Heading -->
+                                <h5 class="font-weight-bold">
+                                    Réglementation
+                                </h5>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="card Mycard-5 shadow-lg mb-6 mb-md-4 lift lift-lg">
+                            <a href="/reservation" class="mylink">
+                                <div class="Mycard-body card-body text-center">
+
+                                    <!-- Icon -->
+                                    <div class="mx-auto Myicon-circle  mb-1">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H10V20.09L12.09,18H6V16H14.09L16.09,14H6V12H18.09L20,10.09V8L14,2H6M13,3.5L18.5,9H13V3.5M20.15,13C20,13 19.86,13.05 19.75,13.16L18.73,14.18L20.82,16.26L21.84,15.25C22.05,15.03 22.05,14.67 21.84,14.46L20.54,13.16C20.43,13.05 20.29,13 20.15,13M18.14,14.77L12,20.92V23H14.08L20.23,16.85L18.14,14.77Z"></path>
+                                        </svg>
+                                    </div>
+
+                                    <!-- Heading -->
+                                    <h5 class="font-weight-bold">
+                                        Réservation
+                                    </h5>
+
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-md-6">
+                        <div class="card Mycard-3 shadow-lg mb-6 mb-md-4 lift lift-lg">
+                            <div class="Mycard-body card-body text-center">
+
+                                <!-- Icon -->
+                                <div class="mx-auto Myicon-circle  mb-1">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M22,6.92L20.59,5.5L17.74,8.72C15.68,6.4 12.83,5 9.61,5C6.72,5 4.07,6.16 2,8L3.42,9.42C5.12,7.93 7.27,7 9.61,7C12.35,7 14.7,8.26 16.38,10.24L13.5,13.5L9.5,9.5L2,17L3.5,18.5L9.5,12.5L13.5,16.5L17.55,11.93C18.3,13.28 18.8,14.83 19,16.5H21C20.78,14.18 20.05,12.09 18.96,10.34L22,6.92Z"></path>
+                                    </svg>
+
+                                </div>
+
+                                <!-- Heading -->
+                                <h5 class="font-weight-bold">
+                                    Bourse aux SCPI
+                                </h5>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-12 col-md-6">
+                        <div class="card Mycard-4 shadow-lg mb-6 mb-md-4 lift lift-lg">
+                            <div class="Mycard-body card-body text-center">
+
+                                <!-- Icon -->
+                                <div class="mx-auto Myicon-circle  mb-1">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M7,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H7A2,2 0 0,1 5,20V4A2,2 0 0,1 7,2M7,4V8H17V4H7M7,10V12H9V10H7M11,10V12H13V10H11M15,10V12H17V10H15M7,14V16H9V14H7M11,14V16H13V14H11M15,14V16H17V14H15M7,18V20H9V18H7M11,18V20H13V18H11M15,18V20H17V18H15Z"></path>
+                                    </svg>
+                                </div>
+
+                                <!-- Heading -->
+                                <h5 class="font-weight-bold">
+                                    Simulation
+                                </h5>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-12 col-md-6">
+                        <div class="card Mycard-6 shadow-lg mb-6 mb-md-4 lift lift-lg">
+                            <div class="Mycard-body card-body text-center">
+
+                                <!-- Icon -->
+                                <div class="mx-auto Myicon-circle  mb-1">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12,2A7,7 0 0,1 19,9C19,11.38 17.81,13.47 16,14.74V17A1,1 0 0,1 15,18H9A1,1 0 0,1 8,17V14.74C6.19,13.47 5,11.38 5,9A7,7 0 0,1 12,2M9,21V20H15V21A1,1 0 0,1 14,22H10A1,1 0 0,1 9,21M12,4A5,5 0 0,0 7,9C7,11.05 8.23,12.81 10,13.58V16H14V13.58C15.77,12.81 17,11.05 17,9A5,5 0 0,0 12,4Z"></path>
+                                    </svg>
+                                </div>
+
+                                <!-- Heading -->
+                                <h5 class="font-weight-bold">
+                                    Assistance
+                                </h5>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+
+</section>
+
+<!-- HUB
+================================================== -->
+<section class="py-8 py-md-11 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 aos-init aos-animate" data-aos="fade-up">
+
+                <!-- Icon -->
+                <div class="icon text-primary mb-3 text-center">
+
+                    <i class="fe fe-info bigicon"></i>
+
+                </div>
+
+                <!-- Heading -->
+                <h3 class="text-center">
+                    Choisissez la SCPI la mieux adaptée à vos besoins
+                </h3>
+
+
+            </div>
+            <div class="col-12 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="50">
+
+                <!-- Icon -->
+                <div class="icon text-primary mb-3 text-center">
+                    <i class="fe fe-check-circle-o bigicon"></i>
+                </div>
+
+                <!-- Heading -->
+                <h3 class="text-center">
+                    Sélectionnez le nombre de parts que vous voulez réservez
+                </h3>
+
+
+            </div>
+            <div class="col-12 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+                <!-- Icon -->
+                <div class="icon text-primary mb-3 text-center">
+                    <i class="fe fe-money bigicon"></i>
+                </div>
+
+                <!-- Heading -->
+                <h3 class="text-center">
+                    Commencer à générer votre revenu complémentaire
+                </h3>
+
+
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+</section>
+
+<!-- ABOUT
+================================================== -->
+<section class="py-8 py-md-11  bg-gradient-light">
+    <div class="container">
+        <div class="row cercles">
+
+            <div class="col-12 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="50">
+
+                <!-- Card -->
+                <div class="card card-border border-primary shadow-lg mb-6 mb-md-8 lift lift-lg">
+                    <div class="card-body text-center">
+
+                        <!-- Icon -->
+                        <div class="text-white mb-5">
+                            <i class="icon feather icon-help-circle" style="font-size: 40px!important;color: #335eea!important;"></i>
+                        </div>
+
+                        <!-- Heading -->
+                        <h4 class="font-weight-bold">
+                            Qu’est-ce qu’une SCPI ?
+                        </h4>
+
+                        <!-- Text -->
+                        <p class="text-gray-700 mb-5">
+                            Une SCPI est un placement collectif qui investit l’épargne collectée...
+                        </p>
+
+                        <!-- Link -->
+                        <a href="#!" class="font-size-sm font-weight-bold text-decoration-none">
+                            Afficher la suite <i class="fe fe-arrow-right ml-3"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+                <!-- Card -->
+                <div class="card card-border border-success shadow-lg mb-6 mb-md-8 lift lift-lg">
+                    <div class="card-body text-center">
+
+                        <!-- Icon -->
+                        <div class="text-white mb-5">
+                            <i class="icon feather icon-settings" style="font-size: 40px!important;color: #42ba96!important;"></i>
+                        </div>
+
+                        <!-- Heading -->
+                        <h4 class="font-weight-bold">
+                            Comment fonctionne une SCPI ?
+                        </h4>
+
+                        <!-- Text -->
+                        <p class="text-gray-700 mb-5">
+                            La SCPI est créée et gérée par une société de gestion ...
+                        </p>
+
+                        <!-- Badge -->
+                        <a href="#!" class="font-size-sm font-weight-bold text-decoration-none">
+                            Afficher la suite <i class="fe fe-arrow-right ml-3"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="150">
+
+                <!-- Card -->
+                <div class="card card-border border-warning shadow-lg mb-6 mb-md-8 lift lift-lg">
+                    <div class="card-body text-center">
+
+                        <!-- Icon -->
+                        <div class="text-white mb-5">
+                            <i class="icon feather icon-briefcase" style="font-size: 40px!important;color:#fad776!important;"></i>
+                        </div>
+
+                        <!-- Heading -->
+                        <h4 class="font-weight-bold">
+                            Comment investir dans une SCPI ?
+                        </h4>
+
+                        <!-- Text -->
+                        <p class="text-gray-700 mb-5">
+                            Vous pouvez acheter des parts de SCPI directement auprès ...
+                        </p>
+
+                        <!-- Badge -->
+                        <a href="#!" class="font-size-sm font-weight-bold text-decoration-none">
+                            Afficher la suite <i class="fe fe-arrow-right ml-3"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+</section>
+
+<!-- TESTIMONIALS
+================================================== -->
+
+
+    <section class="pt-8 pt-md-11 bg-gradient-light">
+        <div class="container">
+            <div class="row align-items-center justify-content-between mb-8 mb-md-11">
+                <div class="col-12 col-md-8 order-md-2 aos-init aos-animate" data-aos="fade-left">
+
+                    <!-- Heading -->
+                    <h2>
+                        Bourse aux SCPI
+
+                    </h2>
+
+                    <!-- Text -->
+                    <p> Espace soumise à la loi de l’offre et de la demande, Vendez et achetez en ligne vos parts de SCPI entre particulier et encadré par un notaire </p>
+
+                    <div class="float-right"> <a class="navbar-btn btn btn-sm btn-primary lift ml-auto mt-2 " href="#">
+                            Vendez vos parts
+                        </a>
+
+
+
+                        <a class="navbar-btn btn btn-sm btn-primary lift ml-auto mt-2 " href="#">
+                            Achetez des parts
+                        </a>
+                    </div>
+
+
+
+                    <!-- List -->
+                    <!-- / .row -->
+
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 order-md-1 aos-init aos-animate" data-aos="fade-right">
+
+                    <!-- Card -->
+                    <div class=" shadow-light-lg lift lift-lg">
+
+                        <!-- Image -->
+                        <img src="/asset/img/new01-01.png" alt="..." class=" img-fluid mw-md-100 float-right mr-md-6 mb-6 mb-md-0">
+
+                        <!-- Shape -->
+
+
+                        <!-- Body -->
+
+
+                    </div>
+
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+
+<section class="py-8 py-md-11">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6">
+
+                <!-- Heading -->
+                <h2 class="font-weight-bold">
+                    Faites fructifier votre argent en un clic !
+                </h2>
+
+                <!-- Text -->
+                <p class="font-size-lg text-muted mb-5">
+                    Pratique, rapide et facile, lascpi.fr est conçu pour votre mode de vie. La technologie de notre plate-forme vous permet de réserver vos parts de la SCPI en lignesans avoir à vous déplacer,de gérer votre argent intelligemment et de suivre la performance de votre placement en temps réel !
+                </p>
+
+                <!-- Button -->
+                <a href="#!" class="btn btn-primary-desat mb-6 mb-md-0 lift">
+                    Réservez maintenant <i class="fe fe-arrow-right ml-3"></i>
+                </a>
+
+            </div>
+            <div class="col-12 col-md-6">
+
+                <!-- iPhone + Macbook -->
+                <div class="w-md-130">
+                    <div class="device-combo device-combo-iphonex-macbook">
+
+                        <!-- iPhone -->
+                        <div class="device device-iphonex">
+                            <!-- <img src="{{ asset('asset/img/screenshots/mobile/dashkit-alt.jpg') }}" class="device-screen" alt="..."> -->
+                            <!-- <img src="{{ asset('asset/img/ass4-01.jpg') }}" class="img-fluid" alt="...">  -->
+                        </div>
+
+                        <!-- Macbook -->
+                        <div class="device device-macbook">
+                            <!--  <img src="{{ asset('asset/img/screenshots/desktop/dashkit-alt.jpg') }}" class="device-screen" alt="..."> -->
+                            <img src="{{ asset('asset/img/new01-02.png') }}" class="img-fluid" alt="...">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+</section>
+
+<section class="pt-8 pt-md-10" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+
+                <!-- Button -->
+                <a href="#about" class="btn btn-white btn-rounded-circle shadow mt-n12 mt-md-n14" data-toggle="smooth-scroll">
+                    <i class="fe fe-arrow-down"></i>
+                </a>
+
+            </div>
+        </div> <!-- / .row -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 text-center">
+
+                <!-- Heading -->
+                <h2 class="font-weight-bold">
+                    Simulez et s'informer
+                </h2>
+
+
+
+            </div>
+        </div> <!-- / .row -->
+        <div class="row">
+            <div class="col-12 col-lg-6">
+
+                <!-- Item -->
+                <div class="row align-items-start mb-8 aos-init aos-animate" data-aos="fade-up">
+                    <div class="col-4 col-lg-5">
+
+                        <!-- Image -->
+                        <img src="{{ asset('asset/img/illustrations/illustration-7.png') }}" alt="..." class="img-fluid">
+
+                    </div>
+                    <div class="col-8 col-lg-7">
+
+                        <!-- Heading -->
+                        <h3 class="font-weight-bold mb-2">
+                            Simulation
+                        </h3>
+
+                        <!-- Text -->
+                        <p class="text-gray-700 mb-2">
+                            Simulez votre placement SCPI en quelques secondes et obtenez votre complément de revenu
+                        </p>
+
+                        <!-- Button -->
+                        <a href="#!" class="btn btn-primary-desat mb-6 mb-md-0 lift w-100">
+                            Simulez <i class="fe fe-arrow-right ml-3"></i>
+                        </a>
+
+                    </div>
+                </div> <!-- / .row -->
+
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Item -->
+                <div class="row align-items-start mb-8 aos-init aos-animate" data-aos="fade-up">
+                    <div class="col-4 col-lg-5">
+
+                        <!-- Image -->
+                        <img src="{{ asset('asset/img/illustrations/illustration-4.png') }}" alt="..." class="img-fluid">
+
+                    </div>
+                    <div class="col-8 col-lg-7">
+
+                        <!-- Heading -->
+                        <h3 class="font-weight-bold mb-2">
+                            App
+                        </h3>
+
+                        <!-- Text -->
+                        <p class="text-gray-700 mb-2">
+                            Une application d'investissement de pointe avec une interface claire et intuitive, créée pour vous aider à vendre ou à réserver en ligne les meilleurs parts de SCPI, qui répondent parfaitement à vos besoins chez un gestionnaire ou entre particuliers
+                        </p>
+
+                        <div class="row align-items-center">
+
+                            <div class="col-auto">
+
+                                <a href="#!" class="text-reset d-inline-block mr-1">
+                                    <img src="{{ asset('asset/img/buttons/button-app.png') }}" class="img-fluid" alt="..." style="max-width: 120px;">
+                                </a>
+
+                                <a href="#!" class="text-reset d-inline-block mt-1">
+                                    <img src="{{ asset('asset/img/buttons/button-play.png') }}" class="img-fluid" alt="..." style="max-width: 120px;">
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div> <!-- / .row -->
+
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+</section>
+
+{% endblock %}

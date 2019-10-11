@@ -1,0 +1,89 @@
+{% extends 'user/base.html.twig' %}
+
+
+
+{% block title %} Panier {% endblock %}
+
+{% block body %}
+<section class="py-8 py-md-11 bg-light listscpi">
+    <div class="px-5">
+            <div class="row">
+                <div class="col-12">
+                    {% for sc in scpis %}
+                        <div class=" linechosen " data-index="{{ sc.id }}">
+                            <div class="d-flex">
+                                <div class="scpichoisit d-flex align-items-center justify-content-center w-75 px-5 py-5 mb-5 mr-3">
+                                    <div class="pr-3">
+                                        <span class="close"><i class="icon feather icon-x"></i></span>
+                                    </div>
+                                    <div class="text-center w-100 containerlogoscpi p-2 h-100 d-flex align-items-center flex-column justify-content-center" style="background-color:  #0d95e8;">
+                                        <img src="{{  asset('/logos/'~sc.logo) }}" alt="" class="img-fluid logoscpi">
+                                        <span class="w-100 mt-2 d-block">{{ sc.nom }}</span>
+                                    </div>
+                                    <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                        <img src="{{  asset('/asset/img/Group410.png') }}" alt="" class="img-fluid  icon">
+                                        <b class="mt-2 d-block">Date création</b>
+                                        <span class="w-100 ">{{ sc.annee }}</span>
+                                    </div>
+                                    <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                        <img src="{{  asset('/asset/img/Group409.png') }}" class="img-fluid  icon">
+                                        <b class="w-100 mt-2 d-block">Nature</b>
+                                        <span class="w-100">{{ sc.nature }}</span>
+                                    </div>
+                                    <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                        <img src="{{  asset('/asset/img/Group408.png') }}" class="img-fluid  icon">
+                                        <b class="w-100 mt-2 d-block">Gestionnaire</b>
+                                        <span class="w-100">{{ sc.MyGestionnaire.nom }}</span>
+                                    </div>
+                                    <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                        <img src="{{  asset('/asset/img/Path1093.png') }}" alt="" class="img-fluid  icon">
+                                        <b class="w-100 mt-2 d-block">Rendement</b>
+                                        <span class="w-100">{{ sc.rendementactuel }}</span>
+                                    </div>
+                                    <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                        <img src="{{  asset('/asset/img/Path1092.png') }}" alt="" class="img-fluid  icon">
+                                        <b class="w-100 mt-2 d-block">Valeur de part</b>
+                                        <span class="w-100">{{ sc.valeurPart }} €</span>
+                                    </div>
+                                    <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                        <img src="{{  asset('/asset/img/Group407.png') }}" alt="" class="img-fluid  icon">
+                                        <b class="w-100 mt-2 d-block">Bilan / hist</b>
+                                        <span class="w-100">2018</span>
+                                    </div>
+                                    <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                        <select class="nombreparts w-100 text-center py-1">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                        <b class="w-100 mt-2 d-block">Nombre de part</b>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column scpichoisit w-25 px-5 py-5 mb-5 justify-content-center">
+                                    <p class="font-weight-bold   w-fit">Montant demandé   <br/> <span class="montantdemande"> 0  </span> € </p>
+                                    <p class="font-weight-bold w-fit  ">Rente moyenne annuelle   <br/> <span class="rente"> 0  </span> € </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-12 text-center mt-3">
+                    <a href="#" class=" btnbrand py-3" >
+                        Checkout
+                    </a>
+                </div>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

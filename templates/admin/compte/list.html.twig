@@ -1,0 +1,58 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %} Comptes {% endblock %}
+
+{% block extrahead %}
+
+
+{% endblock %}
+
+
+{% block extrafooter %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-table">
+                <div class="card-header">Comptes</div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Email</th>
+                            <th>Identifiant</th>
+                            <th>Avatar</th>
+                            <th>Tel</th>
+                            <th>Adresse postale</th>
+                            <th class="actions"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for c in comptes %}
+                            <tr>
+                                <td> {{ c.nom }}</td>
+                                <td> {{ c.prenom }}</td>
+                                <td> {{ c.email }}</td>
+                                <td> {% if c.identifiant is  not null %} <a href="{{ asset('/identifiants/'~c.identifiant) }}" target="_blank">Voir</a> {% else %} Pas d'identifiant {% endif %} </td>
+                                <td> {% if c.avatar is  not null %} <a href="{{ asset('/avatars/'~c.avatar) }}" target="_blank">Voir</a> {% else %} Pas d'avatar {% endif %}</td>
+                                <td> {{ c.tel }}</td>
+                                <td> {{ c.adresse }}</td>
+                                <td class="actions">
+                                    <a class="icon" href="/admin/compte/delete/{{ c.id }}"><i class="mdi mdi-delete"></i></a>&nbsp;&nbsp;
+                                    <a class="icon" href="/admin/compte/edit/{{ c.id }}"><i class="mdi mdi-edit"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

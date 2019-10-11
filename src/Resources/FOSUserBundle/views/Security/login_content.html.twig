@@ -1,0 +1,52 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="row align-items-center justify-content-center no-gutters" style="height: 400px">
+
+    <div class="col-12 text-center">
+        {% if error %}
+            <div class="alert alert-danger alert-dismissible fade show d-inline-block" role="alert">
+                <p class="mb-0">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="col-12 d-flex justify-content-center ">
+
+        <!-- Form -->
+        <form class="mb-6 fos_user_login w-md-75 w-100 mx-auto p-2" name="fos_user_login" action="{{ path("fos_user_security_check") }}" method="post">
+
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+
+            <!-- Email -->
+            <div class="form-group">
+                <p><label for="fos_user_username">{{ 'security.login.username'|trans }}</label></p>
+                <input type="text" class="fos_user_username" id="fos_user_username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+            </div>
+
+            <!-- Password -->
+            <div class="form-group mb-5">
+                <p><label for="fos_user_password">{{ 'security.login.password'|trans }}</label></p>
+                <input type="password" id="fos_user_password" class="fos_user_password" name="_password" required="required" autocomplete="current-password" />
+            </div>
+
+            <div class="form-group mb-5 d-flex align-items-center">
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label for="remember_me" class="mb-0 ml-2">{{ 'security.login.remember_me'|trans }}</label>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class=" btnbrand w-100 login" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            </div>
+
+
+        </form>
+
+    </div>
+</div> <!-- / .row -->
+

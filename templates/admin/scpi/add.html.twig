@@ -1,0 +1,116 @@
+
+{% extends 'admin/base.html.twig' %}
+
+{% block title %} Ajouter scpi {% endblock %}
+
+{% block body %}
+
+
+    <div class="row">
+        <div class="col-12">
+
+
+
+            {% for message in app.flashes('message') %}
+                <div class="w-50 mx-auto">
+
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="mdi mdi-close" aria-hidden="true"></span></button>
+                        <div class="icon"><span class="mdi mdi-check"></span></div>
+                        <div class="message">{{  message }}</div>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+
+
+            <div class="card card-border-color card-border-color-primary">
+                <div class="card-body">
+                    {{ form_start(form) }}
+
+                    {%  if not form_errors(form) is empty  %}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="mdi mdi-close" aria-hidden="true"></span></button>
+                            <div class="icon"> <span class="mdi mdi-close-circle-o"></span></div>
+                            <div class="message">{{ form_errors(form) }}</div>
+                        </div>
+                    {% endif %}
+
+                    <div class="form-group pt-2">
+                        {{ form_label(form.nom, 'Nom') }}
+                        {{ form_widget(form.nom,{ 'attr': {'class': 'form-control','placeholder':'Nom'} }) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.annee, 'Anneé') }}
+                        {{ form_widget(form.annee,{ 'attr': {'class': 'form-control','placeholder':'Anneé'} }) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.nature, 'Nature') }}
+                        {{ form_widget(form.nature,{ 'attr': {'class': 'form-control','placeholder':'Nature'} }) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.rendementactuel, 'Rendement actuel') }}
+                        {{ form_widget(form.rendementactuel,{ 'attr': {'class': 'form-control','placeholder':'Rendement actuel'} }) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.valeurpart, 'Valeur de part') }}
+                        {{ form_widget(form.valeurpart,{ 'attr': {'class': 'form-control','placeholder':'Valeur de part'} }) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.MyGestionnaire, 'Gestionnaire') }}
+                        {{ form_widget(form.MyGestionnaire,{ 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.Bilan, 'Bilan') }}
+                        {{ form_widget(form.Bilan,{ 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+
+                    <div class="form-group row">
+                        {{ form_label(form.logo, 'Charger le logo ', {'label_attr': {'class': 'col-12 col-sm-3 col-form-label text-sm-right'}}) }}
+                        <div class="col-12 col-sm-6">
+                            {{ form_widget(form.logo) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        {{ form_label(form.coleur, 'La coleur', {'label_attr': {'class': 'col-12 col-sm-3 col-form-label text-sm-right'}}) }}
+                        <div class="col-12 col-sm-6">
+                            {{ form_widget(form.coleur) }}
+                        </div>
+                    </div>
+
+
+
+                    <div class="row pt-3">
+                        <div class="col-lg-6 pb-4 pb-lg-0">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="text-right">
+                                {{ form_widget(form.save, { 'attr': {'class': 'btn btn-space btn-primary'} , 'label': 'Valider' } ) }}
+                            </p>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+

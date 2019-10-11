@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from landkit.goodthemes.co/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Jul 2019 13:44:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="{{ asset('asset/fonts/Feather/feather.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/flickity/dist/flickity.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/flickity-fade/flickity-fade.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/aos/dist/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/jarallax/dist/jarallax.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/highlightjs/styles/vs2015.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css') }}">
+
+
+
+
+    <style>
+
+        .alert.alert-danger div ul
+        {
+            margin-bottom: 0px;
+        }
+
+    </style>
+
+    <!-- Map -->
+    <link href="{{  asset('asset/mapbox-gl.css') }}" rel='stylesheet' />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{ asset('asset/css/theme.min.css') }}">
+
+    <title>Landkit</title>
+</head>
+<body>
+
+
+
+{% if app.request.hasPreviousSession %}
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="flash-{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+
+
+<div>
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</div>
+
+
+
+<!-- JAVASCRIPT
+ ================================================== -->
+<!-- Libs JS -->
+<script src="{{ asset('asset/libs/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('asset/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('asset/libs/flickity/dist/flickity.pkgd.min.js') }}"></script>
+<script src="{{ asset('asset/libs/flickity-fade/flickity-fade.js') }}"></script>
+<script src="{{ asset('asset/libs/aos/dist/aos.js') }}"></script>
+<script src="{{ asset('asset/libs/smooth-scroll/dist/smooth-scroll.min.js') }}"></script>
+<script src="{{ asset('asset/libs/jarallax/dist/jarallax.min.js') }}"></script>
+<script src="{{ asset('asset/libs/jarallax/dist/jarallax-video.min.js') }}"></script>
+<script src="{{ asset('asset/libs/jarallax/dist/jarallax-element.min.js') }}"></script>
+<script src="{{ asset('asset/libs/typed.js/lib/typed.min.js') }}"></script>
+<script src="{{ asset('asset/libs/countup.js/dist/countUp.min.js') }}"></script>
+<script src="{{ asset('asset/libs/highlightjs/highlight.pack.min.js') }}"></script>
+<script src="{{ asset('asset/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js') }}"></script>
+
+<!-- Map -->
+<script src="{{ asset('asset/mapbox-gl.js') }}"></script>
+
+<!-- Theme JS -->
+<script src="{{ asset('asset/js/theme.min.js') }}"></script>
+
+<script>
+   /* $('.signup').click(function () {
+
+        var p = $(this).closest('.tab-pane');
+
+        $('.usernamee').val(p.find('.nome').val());
+
+        $.ajax({
+            type        : 'post',
+            url         : '{{ path('fos_user_registration_register') }}',
+            data        : $(this).closest('form').serialize(),
+            dataType    : "json",
+            success     : function(data, status, object) {
+
+                alert(data);
+
+                //p.find('.diverr').fadeIn();
+
+                if(data.error) { p.find('.diverr').addClass('alert-danger');
+                    p.find('.diverr .errmsg').text(data.message);}
+                else
+                {
+                    p.find('.diverr').addClass('alert-success');
+                    p.find('.errmsg').text("Inscription success.");
+                    /!*setTimeout(function () {
+                        window.location.reload();
+                    },1000);*!/
+                }
+            },
+            error: function(data, status, object){
+                p.find('.diverr').fadeIn();
+                p.find('.errmsg').text(data.message);
+            }
+        });
+
+    })*/
+</script>
+
+</body>
+
+<!-- Mirrored from landkit.goodthemes.co/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Jul 2019 13:44:41 GMT -->
+</html>

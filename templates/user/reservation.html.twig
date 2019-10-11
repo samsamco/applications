@@ -1,0 +1,199 @@
+
+{% extends 'user/base.html.twig' %}
+
+{% block styleofpage %}
+    <link rel="stylesheet" href="{{ asset('asset/css/reservation.css') }}">
+{% endblock %}
+
+{% block title %} Scpi {% endblock %}
+
+{% block body %}
+
+    <section class="py-8 py-md-11 bg-light listscpi">
+        <div class="container container1 herosection">
+
+            <div class="row ">
+                <div class="col-12">
+                    <h1 class="text-center mb-0">
+                        Prenez le minimum de risque pour le maximum de rendement
+                    </h1>
+                </div>
+            </div>
+
+            <div class="container-slick">
+                <div class="first">
+                    <div class="row no-gutters scpi-container justify-content-center">
+
+                        {% for sc in scpis %}
+
+                            <div class="col-12 col-md-4 p-3 mt-3">
+                                <div class="boxscpi lift d-flex flex-column pt-5 pb-3 pr-3 pl-3 position-relative" data-nom="{{  sc.nom }}" data-index="{{ sc.id }}" style="border-bottom: 4px solid {{ sc.coleur }};border-right: 1px solid {{ sc.coleur }};border-left: 1px solid {{ sc.coleur }};border-top: 1px solid {{ sc.coleur }};">
+                                    <img src="{{  sc.logo }}" class="img-fluid mt-auto align-self-center logoscpi mb-1" />
+                                    <p class="rendementscpi mt-auto" style="color:{{ sc.coleur }};"> {{ sc.Rendementactuel }} % </p>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+                <div class="d-none">
+                    <div class="row no-gutters scpi-container">
+
+                        {% for sc in scpis %}
+                            <div class=" linechosen w-100" data-index="{{ sc.id }}">
+                                <div class="d-flex">
+                                    <div class="scpichoisit d-flex align-items-center justify-content-center w-75 px-5 py-5 mb-5 mr-3">
+                                        <div class="pr-3">
+                                            <span class="close"><i class="icon feather icon-x"></i></span>
+                                        </div>
+                                        <div class="text-center w-100 containerlogoscpi p-2 h-100 d-flex align-items-center flex-column justify-content-center" style="background-color:  #0d95e8;">
+                                            <img src="{{ sc.logo }}" alt="" class="img-fluid logoscpi">
+                                            <span class="w-100 mt-2 d-block">{{ sc.nom }}</span>
+                                        </div>
+                                        <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                            <img src="{{  asset('/asset/img/Group410.png') }}" alt="" class="img-fluid  icon">
+                                            <b class="mt-2 d-block">Date création</b>
+                                            <span class="w-100 ">{{ sc.annee }}</span>
+                                        </div>
+                                        <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                            <img src="{{  asset('/asset/img/Group409.png') }}" class="img-fluid  icon">
+                                            <b class="w-100 mt-2 d-block">Nature</b>
+                                            <span class="w-100">{{ sc.nature }}</span>
+                                        </div>
+                                        <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                            <img src="{{  asset('/asset/img/Group408.png') }}" class="img-fluid  icon">
+                                            <b class="w-100 mt-2 d-block">Gestionnaire</b>
+                                            <span class="w-100">{{ sc.MyGestionnaire.nom }}</span>
+                                        </div>
+                                        <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                            <img src="{{  asset('/asset/img/Path1093.png') }}" alt="" class="img-fluid  icon">
+                                            <b class="w-100 mt-2 d-block">Rendement</b>
+                                            <span class="w-100">{{ sc.rendementactuel }}</span>
+                                        </div>
+                                        <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                            <img src="{{  asset('/asset/img/Path1092.png') }}" alt="" class="img-fluid  icon">
+                                            <b class="w-100 mt-2 d-block">Valeur de part</b>
+                                            <span class="w-100">{{ sc.valeurPart }} €</span>
+                                        </div>
+                                        <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                            <img src="{{  asset('/asset/img/Group407.png') }}" alt="" class="img-fluid  icon">
+                                            <b class="w-100 mt-2 d-block">Bilan / hist</b>
+                                            <span class="w-100">2018</span>
+                                        </div>
+                                        <div class="d-flex flex-column w-100 align-items-center justify-content-center text-center">
+                                            <select class="nombreparts w-100 text-center py-1">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                            <b class="w-100 mt-2 d-block">Nombre de part</b>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column scpichoisit w-25 px-5 py-5 mb-5 justify-content-center">
+                                        <p class="font-weight-bold   w-fit">Montant demandé   <br/> <span class="montantdemande"> 0  </span> € </p>
+                                        <p class="font-weight-bold w-fit  ">Rente moyenne annuelle   <br/> <span class="rente"> 0  </span> € </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <div class="d-none">
+                        <div class="row align-items-center justify-content-center">
+
+                              {% if plein is defined and not plein is null  %}
+                                <div class="col-12 col-md-8">
+                                    {% else  %}
+                                <div class="col-12 col-md-8">
+                                    {% endif %}
+
+                                    <div class="login_container p-0  {% if plein is defined and not plein is null  %} my-4 {% endif %}">
+                                        <ul class="nav nav-tabs no-border position-relative">
+                                            <li class="{% if type is defined and not type is null and type == 'register'  %} active {% endif %}" ><a href="#signup" data-toggle="pill" >Créer un compte</a></li>
+                                            <li class="{% if type is defined and not type is null and type == 'login'  %} active {% endif %} {% if not type is defined or ( not type == 'login' and not type == 'register')  %} active {% endif %}" ><a href="#signin" data-toggle="pill">Se connecter</a></li>
+                                        </ul>
+                                        <div class="tab-content position-relative d-flex align-items-center">
+                                            <div id="signup" class="tab-pane {% if type is defined and not type is null and type == 'register'  %} active  {% else %} fade {% endif %} w-100" style="height: fit-content">
+                                                {{ render(controller('App\\Controller\\RegistrationController::index',{'id':4})) }}
+                                            </div>
+                                            <div id="signin" class="tab-pane {% if type is defined and not type is null and type == 'login'  %} active  {% elseif not(not type is defined or ( not type == 'login' and not type == 'register'))  %} fade {% endif %}  w-100 {% if not type is defined or ( not type == 'login' and not type == 'register')  %} active {% endif %}" style="height: fit-content">
+                                                {{ render(controller('App\\Controller\\LoginController::index')) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                </div>
+                              {% if plein is defined and not plein is null  %}
+                                </div>
+                               {% endif %}
+                    </div>
+                {% endif %}
+                <div class="d-none">
+                    <div class="row no-gutters scpi-container">
+
+                        <div class="col-12">
+                            <div class="contart p-3">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br/>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br/>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center"> <input type="checkbox" name="checkbox" class="checkall accepter" disabled /> <span class="colorbrand d-inline-block ml-2">Accépter</span> </div>
+                                </div>
+                                <div class="col-6">
+                                    <a href="#"  class="float-right colorbrand font-weight-bold downloadcontrat enabled d-flex align-items-center"><span>Télécharger votre contrat  </span> <i class="fe fe-download colorbrand  d-inline-block ml-2"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row mt-3 no-gutters ">
+                <div class="col-6 text-left px-3">
+                    <a href="#" class=" btnbrand no-background prevee d-none"  >
+                        Précédent
+                    </a>
+                </div>
+                <div class="col-6 text-right px-3">
+                    <a href="#" class=" btnbrand  nexxt" >
+                        Suivant
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

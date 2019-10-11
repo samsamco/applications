@@ -1,0 +1,89 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row align-items-center justify-content-center no-gutters" style="height: auto;">
+
+
+    {{ form_errors(form.plainPassword.first) }}
+
+
+    <div class="col-12 d-flex justify-content-center">
+
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register w-md-75 w-100 mx-auto p-2'}}) }}
+
+        <div class="row no-gutters">
+            <div class="col-12">
+                <div>
+                    <p>{{ form_label(form.username) }} </p>
+                    {{ form_widget(form.username,{ 'attr': {'placeholder': 'Nom d\'utlisateur'} }) }}
+                </div>
+            </div>
+        </div>
+        <div class="row no-gutters mt-4">
+            <div class="col-12 col-md-6 pr-md-2">
+                <div>
+                    <p> {{ form_label(form.nom) }}</p>
+                    {{ form_widget(form.nom,{ 'attr': {'placeholder': 'Nom'} }) }}
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p>{{ form_label(form.prenom) }}</p>
+                    {{ form_widget(form.prenom,{ 'attr': {'placeholder': 'Prenom'} }) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-gutters  mt-4">
+            <div class="col-12">
+                <div>
+                    <p>{{ form_label(form.email) }}</p>
+                    {{ form_widget(form.email,{ 'attr': {'placeholder': 'Adresse email'} }) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-gutters  mt-4">
+            <div class="col-12 col-md-6 pr-md-2">
+                <div>
+                    <p>{{ form_label(form.plainPassword.first) }}</p>
+                    {{ form_widget(form.plainPassword.first,{ 'attr': {'placeholder': 'Mot de passe'} }) }}
+                    <i class="icon feather icon-eye colorbrand font-weight-bold showpass" style="
+                                        position: absolute;
+                                        right: 7%;
+                                    "></i>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p>{{ form_label(form.plainPassword.second) }}</p>
+                    {{ form_widget(form.plainPassword.second,{ 'attr': {'placeholder': 'Confirmer le mot de passe'} }) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-gutters  mt-4">
+            <div class="col-12 col-md-6 pr-md-2">
+                <div>
+                    <p>{{ form_label(form.adresse) }}</p>
+                    {{ form_widget(form.adresse,{ 'attr': {'placeholder': 'Adresse postale'} }) }}
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p>{{ form_label(form.tel) }}</p>
+                    {{ form_widget(form.tel , { 'attr': {'class': 'maskedphone','placeholder':'Numéro de téléphone'} }) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-gutters  mt-4">
+            <div class="col-12">
+                <input type="button" value="{{ 'registration.submit'|trans }}" class="signup  btnbrand w-100" />
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+</div>
+
